@@ -1,0 +1,36 @@
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github
+$ ls
+conta-github.txt  img-perfil-github.png  primeiro-repo-github/  repo-criado.txt
+
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github
+$ cd primeiro-repo-github/
+
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github/primeiro-repo-github (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   conexao-remoto.txt
+
+
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github/primeiro-repo-github (main)
+$ git add .
+
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github/primeiro-repo-github (main)
+$ git commit -m "documentação de processo"
+[main f8f6189] documentação de processo
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 conexao-remoto.txt
+
+Marconi@YUre MINGW64 ~/Documents/modulo-01/primeiro-repo-github/primeiro-repo-github (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 300 bytes | 300.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/marconiaragao/primeiro-repo-github
+   4d2e2e1..f8f6189  main -> main
