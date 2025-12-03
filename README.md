@@ -2,3 +2,5 @@
 
 editado localmente
 editado no github
+
+fiz algumas melhorias aqui
