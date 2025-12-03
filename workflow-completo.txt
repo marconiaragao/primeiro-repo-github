@@ -1,0 +1,127 @@
+﻿WORKFLOW COMPLETO - Branches SMN e Features
+==========================================
+
+1) Diagrama de branches
+
+   main
+    |
+    +-- sprint
+    |
+    +-- next
+
+Features criadas a partir de main:
+ - feature/header
+ - feature/footer
+ - feature/sidebar
+
+Fluxo de merges (ordem):
+ 1. feature/header  -> sprint
+ 2. feature/footer  -> sprint
+ 3. feature/sidebar -> sprint
+ 4. sprint          -> main
+
+2) Comandos usados (exemplos)
+
+# Atualizar main local
+git checkout main
+git pull origin main
+
+# Garantir branches SMN
+git branch sprint
+git branch next
+
+# Criar feature branches e commitar
+git checkout -b feature/header main
+# criar header.txt
+git add header.txt
+git commit -m "feat(header): adicionar header.txt"
+git push -u origin feature/header
+
+git checkout main
+git checkout -b feature/footer
+# criar footer.txt
+git add footer.txt
+git commit -m "feat(footer): adicionar footer.txt"
+git push -u origin feature/footer
+
+git checkout main
+git checkout -b feature/sidebar
+# criar sidebar.txt
+git add sidebar.txt
+git commit -m "feat(sidebar): adicionar sidebar.txt"
+git push -u origin feature/sidebar
+
+# Mesclar as features em sprint
+git checkout sprint
+git merge feature/header --no-edit
+git merge feature/footer --no-edit
+git merge feature/sidebar --no-edit
+
+# Testar (verificar arquivos)
+ls | grep header.txt
+ls | grep footer.txt
+ls | grep sidebar.txt
+
+# Mesclar sprint em main
+git checkout main
+git merge sprint --no-edit
+
+git push origin main
+
+# Push all branches (caso queira enviar todas)
+git push --all origin
+
+3) Resolução de conflitos
+
+- Se conflitos aparecerem durante merge:
+  - Inspecione o arquivo com conflito
+  - Tome decisão (manter versão A, B ou mesclar manualmente)
+  - Exemplo de comando para aceitar versão da branch sendo mesclada:
+    git checkout --theirs <arquivo>
+    git add <arquivo>
+    git commit -m "Resolve conflict: aceitar versão de feature"
+
+4) Estado final do repositório (após execução)
+
+- Branches locais existentes (exemplo):
+  - main (atual)
+  - sprint
+  - next
+  - feature/cadastro
+  - feature/calculadora
+  - feature/login
+
+- Branches remotas:
+  - origin/main (atualizado com as mudanças de sprint)
+  - origin/sprint
+  - origin/next
+  - origin/feature/header
+  - origin/feature/footer
+  - origin/feature/sidebar
+  - outras feature/* existentes
+
+- Arquivos adicionados e presentes em main:
+  - header.txt
+  - footer.txt
+  - sidebar.txt
+
+- Recomendações finais:
+  - Deletar branches remotas se não forem mais necessárias: git push origin --delete feature/xyz
+  - Deletar branches locais já mescladas: git branch -d feature/xyz
+  - Manter sprint como branch de integração para entregas regulares
+
+5) Comandos executados neste ambiente (resumo)
+
+- git fetch --all
+- git checkout main; git pull origin main
+- git branch sprint; git branch next
+- git checkout -b feature/header main; create header.txt; git commit; git push -u origin feature/header
+- git checkout -b feature/footer main; create footer.txt; git commit; git push -u origin feature/footer
+- git checkout -b feature/sidebar main; create sidebar.txt; git commit; git push -u origin feature/sidebar
+- git checkout sprint; git merge feature/header; git merge feature/footer; git merge feature/sidebar
+- git checkout main; git merge sprint; git push origin main
+- git push --all origin
+
+Estado final verificado localmente: git status -> working tree clean, main atualizado com origin/main.
+
+Fim do documento.
